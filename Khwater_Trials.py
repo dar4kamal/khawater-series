@@ -40,12 +40,10 @@ def check_if_repeated():
         if row[0] == Season and row[1] == Episode:
             RANDOM()
     if Season == s and Episode == e:
-        c.execute("INSERT INTO data (season,episode) \
-               VALUES (?,?)",(s,e))
+        c.execute("INSERT INTO data (season,episode) VALUES (?,?)",(s,e))
         database.commit()
     else:
-        c.execute("INSERT INTO data (season,episode) \
-               VALUES (?,?)",(Season,Episode))
+        c.execute("INSERT INTO data (season,episode) VALUES (?,?)",(Season,Episode))
         database.commit()
 
 Links = {
@@ -65,7 +63,8 @@ Links = {
 
 def getItems(link):
     global Season,Episode
-    json_format = urllib.request.urlopen("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=%s&maxResults=50&key=AIzaSyDYRfQ7NkfRh7VjEjmrRPMqiAOaA0wPmx4" % link)
+    apiKey = "AIzaSyDYRfQ7NkfRh7VjEjmrRPMqiAOaA0wPmx4nOx74Gjhu827Jgspri53B5nb"
+    json_format = urllib.request.urlopen("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=%s&maxResults=50&key=apiKey" % link)
     json_format_read =json_format.read()
     json_format_decode = json_format_read.decode("utf-8")
     data = json.loads(json_format_decode)
